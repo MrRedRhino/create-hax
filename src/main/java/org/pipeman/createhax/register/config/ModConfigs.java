@@ -1,4 +1,4 @@
-package mod.yourname.yourmodid.register.config;
+package org.pipeman.createhax.register.config;
 
 import com.simibubi.create.foundation.config.ConfigBase;
 import net.minecraftforge.common.ForgeConfigSpec;

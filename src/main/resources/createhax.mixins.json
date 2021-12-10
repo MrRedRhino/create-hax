@@ -1,8 +1,8 @@
 {
-  "required": true,
-  "package": "mod.yourname.yourmodid.mixin",
+  "required": false,
+  "package": "org.pipeman.createhax.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "yourmodid.refmap.json",
+  "refmap": "createhax.refmap.json",
   "mixins": [
   ],
   "injectors": {

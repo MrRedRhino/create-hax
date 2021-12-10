@@ -1,28 +1,16 @@
-package mod.yourname.yourmodid.register.config;
+package org.pipeman.createhax.register.config;
 
-import com.google.common.eventbus.Subscribe;
 import com.simibubi.create.foundation.config.ui.BaseConfigScreen;
-import com.simibubi.create.foundation.gui.AbstractSimiScreen;
 import com.simibubi.create.foundation.gui.ScreenOpener;
-import com.simibubi.create.foundation.gui.TextStencilElement;
-import com.simibubi.create.foundation.gui.widgets.BoxWidget;
-import mod.yourname.yourmodid.BuildConfig;
-import mod.yourname.yourmodid.CreateAddon;
-import net.minecraft.client.Minecraft;
+import mod.MrRedRhino.createhax.BuildConfig;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.command.Commands;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import javax.annotation.Nonnull;
-import java.lang.reflect.Field;
-import java.util.List;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ModConfigCommand {

@@ -1,11 +1,10 @@
-package mod.yourname.yourmodid.register.config;
+package org.pipeman.createhax.register.config;
 
 import com.simibubi.create.foundation.block.BlockStressDefaults;
 import com.simibubi.create.foundation.block.BlockStressValues;
-import mod.yourname.yourmodid.BuildConfig;
+import mod.MrRedRhino.createhax.BuildConfig;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.HashMap;
 import java.util.Map;
