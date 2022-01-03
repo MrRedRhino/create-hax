@@ -35,7 +35,6 @@ public class ModConfigs {
     }
 
     static Map<Config, ModConfig.Type> configs = new HashMap<>();
-
     private static <T extends Config> T register(Supplier<T> factory, ModConfig.Type side) {
         Pair<T, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(builder -> {
             T config = factory.get();

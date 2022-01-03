@@ -1,4 +1,4 @@
-package org.pipeman.createhax;
+package org.pipeman.createhax.hax;
 
 import com.simibubi.create.content.contraptions.components.structureMovement.sync.ClientMotionPacket;
 import com.simibubi.create.foundation.networking.AllPackets;
@@ -12,20 +12,38 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.pipeman.createhax.CreateHax;
+import org.pipeman.createhax.Util;
 
-@Mod.EventBusSubscriber(modid = BuildConfig.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+import java.text.DecimalFormat;
+
 public class FlyHack {
     private static final Minecraft MC = Minecraft.getInstance();
+    private static boolean hotkeyDown = false;
 
     @SubscribeEvent
-    public static void keyInput(InputEvent.KeyInputEvent event) {
-        if (CreateHax.flyHackHotkey.isDown()) {
+    public void keyInput(InputEvent.KeyInputEvent event) {
+        if (CreateHax.flyHackHotkey.isDown() && !hotkeyDown) {
             CreateHax.flyHackOn = !CreateHax.flyHackOn;
+            Util.showToggleMessage("FlyHack", CreateHax.flyHackOn);
+        }
+        hotkeyDown = CreateHax.flyHackHotkey.isDown();
+    }
+
+    @SubscribeEvent
+    public void mouseScroll(InputEvent.MouseScrollEvent event) {
+        if (hotkeyDown) {
+            event.setCanceled(true);
+            if (CreateHax.flyHackSpeed > 0.1 || event.getScrollDelta() > 0)
+                CreateHax.flyHackSpeed += event.getScrollDelta() / 10;
+
+            DecimalFormat df = new DecimalFormat("#.##");
+            Util.sendActionbarMessage("Fly speed set to: §2" + df.format(CreateHax.flyHackSpeed));
         }
     }
 
     @SubscribeEvent
-    public static void performFly(TickEvent.ClientTickEvent clientTickEvent) {
+    public void performFly(TickEvent.ClientTickEvent clientTickEvent) {
         if (MC.player == null || !CreateHax.flyHackOn) return;
 
         Vector3d movement = getJumpVec().multiply(2, 0.5, 2);
